@@ -1,0 +1,23 @@
+{
+  "kind": "singleType",
+  "collectionName": "current_rounds",
+  "info": {
+    "singularName": "current-round",
+    "pluralName": "current-rounds",
+    "displayName": "current-round",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "round": {
+      "type": "integer"
+    },
+    "live": {
+      "type": "boolean",
+      "default": false
+    }
+  }
+}

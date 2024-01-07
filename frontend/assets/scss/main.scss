@@ -1,0 +1,40 @@
+body {
+	font-family: "Brutal Type Black", sans-serif;
+	background: url("assets/images/bg.webp") no-repeat fixed center;
+	font-size: 16px;
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
+}
+
+a {
+	text-decoration: none;
+	text-transform: uppercase;
+}
+
+.layout-default {
+	display: flex;
+	flex-direction: column;
+	min-height: 100vh;
+}
+
+main {
+	margin: rem(50) 0;
+}
+
+.wrapper {
+	margin-right: auto;
+	margin-left: auto;
+
+	max-width: 1170px;
+
+	padding-right: 10px;
+	padding-left: 10px;
+	color: $color-white;
+}
+
+@media (max-width: 1100px) {
+	body {
+		font-size: rem(13);
+	}
+}

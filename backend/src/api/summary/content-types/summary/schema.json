@@ -1,0 +1,39 @@
+{
+  "kind": "collectionType",
+  "collectionName": "summaries",
+  "info": {
+    "singularName": "summary",
+    "pluralName": "summaries",
+    "displayName": "Summary",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "matches": {
+      "type": "integer"
+    },
+    "wins": {
+      "type": "integer"
+    },
+    "lost": {
+      "type": "integer"
+    },
+    "goalsScored": {
+      "type": "integer"
+    },
+    "goalsLost": {
+      "type": "integer"
+    },
+    "player": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::player.player"
+    },
+    "draws": {
+      "type": "integer"
+    }
+  }
+}
