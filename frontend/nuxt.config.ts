@@ -19,9 +19,8 @@ export default defineNuxtConfig({
 	css: ["~/assets/scss/main.scss"],
 	modules: ["@nuxtjs/strapi", "@nuxt/image"],
 	image: {
-		dir: "assets/images",
 		strapi: {
-			baseURL: "http://localhost:1337",
+			baseURL: process.env.STRAPI_URL || "http://localhost:1337",
 		},
 	},
 	strapi: {

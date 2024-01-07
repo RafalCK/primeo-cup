@@ -3,7 +3,7 @@
 		<div class="header__logo">
 			<NuxtImg
 				class="header__logo__logo"
-				src="primeo_white.png"
+				src="/images/primeo_white.png"
 				height="25" />
 			<span class="header__logo__name">CUP</span>
 		</div>
