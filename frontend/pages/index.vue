@@ -14,7 +14,7 @@
 		</div>
 		<div
 			class="dashboard__summary"
-			v-if="true">
+			v-if="cupAlive">
 			<div class="dashboard__summary__info">
 				<div class="dashboard__summary__info__header"><span style="color: #00dfec">K</span>RÓL <span style="color: #00dfec">S</span>TRZECLÓW</div>
 				<PlayersCard :item="topScorerPlayer" />
