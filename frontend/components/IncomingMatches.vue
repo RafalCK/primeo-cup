@@ -31,7 +31,7 @@ let matches: object[] = matchesResponse.data;
 <style lang="scss" scoped>
 .incoming-matches {
 	&__match {
-		margin-bottom: rem(9);
+		margin-bottom: rem(13);
 	}
 }
 

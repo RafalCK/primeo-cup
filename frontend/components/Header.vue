@@ -1,7 +1,7 @@
 <template>
 	<div class="header">
 		<div class="header__logo">
-			<NuxtImg
+			<img
 				class="header__logo__logo"
 				src="/images/primeo_white.png"
 				height="25" />

@@ -3,8 +3,13 @@
 		<template
 			v-for="(roundMatches, roundNumber) in groupedMatches"
 			:key="roundNumber">
-			<div class="round">
+			<div class="schedule__round">
 				<h2>Kolejka {{ roundNumber }}</h2>
+				<span
+					v-if="roundNumber === currentRound.toString()"
+					class="schedule__round__live"
+					>ROZGRYWANA</span
+				>
 			</div>
 			<div
 				class="schedule__match"
@@ -53,10 +58,27 @@ const groupedMatches = matches.reduce((result: object, element: object) => {
 	result[roundNumber].push(element);
 	return result;
 }, {});
+
+const currentRoundResponse = await find("current-round");
+let currentRound: number = currentRoundResponse.data.attributes.round;
 </script>
 
 <style lang="scss" scoped>
 .schedule {
+	&__round {
+		display: inline-flex;
+		align-items: center;
+		gap: rem(10);
+
+		&__live {
+			display: flex;
+			background-color: #7fff00;
+			color: $color-black;
+			padding: rem(5) rem(15);
+			border-radius: rem(25);
+			text-align: center;
+		}
+	}
 	&__match {
 		display: grid;
 		align-items: center;
