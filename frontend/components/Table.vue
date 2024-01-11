@@ -54,6 +54,12 @@ let summaries = summariesResponse.data.sort((a, b) => {
 	const scoreA = a.attributes.wins * 3 + a.attributes.draws * 1;
 	const scoreB = b.attributes.wins * 3 + b.attributes.draws * 1;
 
+	const goalDifferenceA = a.attributes.goalsScored - a.attributes.goalsLost;
+	const goalDifferenceB = b.attributes.goalsScored - b.attributes.goalsLost;
+
+	if (scoreA === scoreB) {
+		return goalDifferenceB - goalDifferenceA;
+	}
 	return scoreB - scoreA;
 });
 

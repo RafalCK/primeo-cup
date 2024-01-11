@@ -24,8 +24,10 @@
 						height="40" />
 				</div>
 				<div class="schedule__match__result">
-					<template v-if="match.attributes.goalsHome && match.attributes.goalsAway"> {{ match.attributes.goalsHome }} : {{ match.attributes.goalsAway ? match.attributes.goalsAway : "-" }}</template>
-					<template v-else> VS </template>
+					<template v-if="match.attributes.goalsHome === null && match.attributes.goalsAway === null"> VS </template>
+					<template v-else-if="match.attributes.goalsHome === 0"> 0 : {{ match.attributes.goalsAway !== null ? match.attributes.goalsAway : 0 }} </template>
+					<template v-else-if="match.attributes.goalsAway === 0"> {{ match.attributes.goalsHome !== null ? match.attributes.goalsHome : 0 }} : 0 </template>
+					<template v-else> {{ match.attributes.goalsHome }} : {{ match.attributes.goalsAway }} </template>
 				</div>
 				<div class="schedule__match__player schedule__match__player__away">
 					<NuxtImg

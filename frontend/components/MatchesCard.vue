@@ -7,7 +7,7 @@
 				:src="item.attributes.playerHome.data.attributes.club.data.attributes.logo.data.attributes.url"
 				height="40" />
 		</div>
-		<div class="matches-card__result">{{ item.attributes.goalsHome ? item.attributes.goalsHome : "-" }} : {{ item.attributes.goalsAway ? item.attributes.goalsAway : "-" }}</div>
+		<div class="matches-card__result">{{ item.attributes.goalsHome !== null ? (item.attributes.goalsHome !== 0 ? item.attributes.goalsHome : "0") : "-" }} : {{ item.attributes.goalsAway !== null ? (item.attributes.goalsAway !== 0 ? item.attributes.goalsAway : "0") : "-" }}</div>
 		<div class="matches-card__player matches-card__player__away">
 			<NuxtImg
 				provider="strapi"
