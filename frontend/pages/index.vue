@@ -17,15 +17,15 @@
 			v-if="cupAlive">
 			<div class="dashboard__summary__info">
 				<div class="dashboard__summary__info__header"><span style="color: #00dfec">K</span>RÓL <span style="color: #00dfec">S</span>TRZECLCÓW</div>
-				<PlayersCard :item="topScorerPlayer" />
-			</div>
-			<div class="dashboard__summary__info">
-				<div class="dashboard__summary__info__header"><span style="color: #00dfec">K</span>RÓL <span style="color: #00dfec">R</span>EMISÓW</div>
-				<PlayersCard :item="topDrawerPlayer" />
+				<template v-for="topScorer in topScorers">
+					<PlayersCard :item="topScorer.attributes.player.data.attributes" />
+				</template>
 			</div>
 			<div class="dashboard__summary__info">
 				<div class="dashboard__summary__info__header"><span style="color: #00dfec">K</span>RÓL <span style="color: #00dfec">D</span>EFENSYWY</div>
-				<PlayersCard :item="leastLostGoalsPlayer" />
+				<template v-for="topScorer in lessLost">
+					<PlayersCard :item="topScorer.attributes.player.data.attributes" />
+				</template>
 			</div>
 		</div>
 	</div>
@@ -42,21 +42,26 @@ const currentRoundResponse = await find("current-round");
 let currentRound: number = currentRoundResponse.data.attributes.round;
 let cupAlive: boolean = currentRoundResponse.data.attributes.live;
 
-const topScorer: object = summaries.reduce((maxSummary, currentSummary) => {
-	return currentSummary.attributes.goalsScored > maxSummary.attributes.goalsScored ? currentSummary : maxSummary;
-});
+const findTopPerformers = (summaries, key, isMax) => {
+	const comparator = isMax ? (a, b) => a > b : (a, b) => a < b;
 
-const topDrawer: object = summaries.reduce((maxSummary, currentSummary) => {
-	return currentSummary.attributes.draws > maxSummary.attributes.draws ? currentSummary : maxSummary;
-});
+	const topValues = summaries.reduce((topSummaries, currentSummary) => {
+		const currentValue = currentSummary.attributes[key];
+		const topValue = topSummaries[0]?.attributes[key];
 
-const leastLostGoals: object = summaries.reduce((maxSummary, currentSummary) => {
-	return currentSummary.attributes.goalsLost < maxSummary.attributes.goalsLost ? currentSummary : maxSummary;
-});
+		if (!topSummaries.length || comparator(currentValue, topValue)) {
+			return [currentSummary];
+		} else if (currentValue === topValue) {
+			return [...topSummaries, currentSummary];
+		}
 
-const topScorerPlayer: object = topScorer.attributes.player.data.attributes;
-const topDrawerPlayer: object = topDrawer.attributes.player.data.attributes;
-const leastLostGoalsPlayer: object = leastLostGoals.attributes.player.data.attributes;
+		return topSummaries;
+	}, []);
+
+	return topValues;
+};
+const topScorers = findTopPerformers(summaries, "goalsScored", true);
+const lessLost = findTopPerformers(summaries, "goalsLost", false);
 </script>
 
 <style lang="scss" scoped>
