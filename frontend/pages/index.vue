@@ -16,7 +16,7 @@
 			class="dashboard__summary"
 			v-if="cupAlive">
 			<div class="dashboard__summary__info">
-				<div class="dashboard__summary__info__header"><span style="color: #00dfec">K</span>RÓL <span style="color: #00dfec">S</span>TRZECLCÓW</div>
+				<div class="dashboard__summary__info__header"><span style="color: #00dfec">K</span>RÓL <span style="color: #00dfec">S</span>TRZELCÓW</div>
 				<template v-for="topScorer in topScorers">
 					<PlayersCard :item="topScorer.attributes.player.data.attributes" />
 				</template>
