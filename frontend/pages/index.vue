@@ -22,8 +22,14 @@
 				</template>
 			</div>
 			<div class="dashboard__summary__info">
-				<div class="dashboard__summary__info__header"><span style="color: #00dfec">K</span>RÓL <span style="color: #00dfec">D</span>EFENSYWY</div>
+				<div class="dashboard__summary__info__header"><span style="color: #00dfec">M</span>ISTRZ <span style="color: #00dfec">D</span>EFENSYWY</div>
 				<template v-for="topScorer in lessLost">
+					<PlayersCard :item="topScorer.attributes.player.data.attributes" />
+				</template>
+			</div>
+			<div class="dashboard__summary__info">
+				<div class="dashboard__summary__info__header"><span style="color: #00dfec">K</span>OLEKCJONER <span style="color: #00dfec">G</span>OLI</div>
+				<template v-for="topScorer in topLost">
 					<PlayersCard :item="topScorer.attributes.player.data.attributes" />
 				</template>
 			</div>
@@ -62,6 +68,7 @@ const findTopPerformers = (summaries, key, isMax) => {
 };
 const topScorers = findTopPerformers(summaries, "goalsScored", true);
 const lessLost = findTopPerformers(summaries, "goalsLost", false);
+const topLost = findTopPerformers(summaries, "goalsLost", true);
 </script>
 
 <style lang="scss" scoped>
@@ -79,7 +86,7 @@ const lessLost = findTopPerformers(summaries, "goalsLost", false);
 			flex: 2;
 		}
 		&__right {
-			flex: 0 0 rem(380);
+			flex: 0 0 rem(385);
 		}
 	}
 
