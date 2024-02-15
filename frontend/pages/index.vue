@@ -87,6 +87,7 @@ const topLost = findTopPerformers(summaries, "goalsLost", true);
 		}
 		&__right {
 			flex: 0 0 rem(400);
+		}
 	}
 
 	&__summary {
